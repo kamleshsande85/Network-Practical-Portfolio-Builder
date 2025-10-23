@@ -1,0 +1,28 @@
+
+kamli@kamli-Mint:~$ ping 192.168.56.4
+PING 192.168.56.4 (192.168.56.4) 56(84) bytes of data.
+64 bytes from 192.168.56.4: icmp_seq=1 ttl=128 time=0.647 ms
+64 bytes from 192.168.56.4: icmp_seq=2 ttl=128 time=0.413 ms
+64 bytes from 192.168.56.4: icmp_seq=3 ttl=128 time=0.380 ms
+64 bytes from 192.168.56.4: icmp_seq=4 ttl=128 time=0.515 ms
+64 bytes from 192.168.56.4: icmp_seq=5 ttl=128 time=0.766 ms
+64 bytes from 192.168.56.4: icmp_seq=6 ttl=128 time=0.735 ms
+^C
+--- 192.168.56.4 ping statistics ---
+6 packets transmitted, 6 received, 0% packet loss, time 5153ms
+rtt min/avg/max/mdev = 0.380/0.576/0.766/0.150 ms
+
+
+kamli@kamli-Mint:~$ ping6  fe80::5899:a5d9:7717:2082
+PING fe80::5899:a5d9:7717:2082 (fe80::5899:a5d9:7717:2082) 56 data bytes
+64 bytes from fe80::5899:a5d9:7717:2082%enp0s3: icmp_seq=1 ttl=128 time=0.770 ms
+64 bytes from fe80::5899:a5d9:7717:2082%enp0s3: icmp_seq=2 ttl=128 time=0.473 ms
+64 bytes from fe80::5899:a5d9:7717:2082%enp0s3: icmp_seq=3 ttl=128 time=0.524 ms
+64 bytes from fe80::5899:a5d9:7717:2082%enp0s3: icmp_seq=4 ttl=128 time=0.502 ms
+64 bytes from fe80::5899:a5d9:7717:2082%enp0s3: icmp_seq=5 ttl=128 time=0.482 ms
+64 bytes from fe80::5899:a5d9:7717:2082%enp0s3: icmp_seq=6 ttl=128 time=0.694 ms
+^C
+--- fe80::5899:a5d9:7717:2082 ping statistics ---
+6 packets transmitted, 6 received, 0% packet loss, time 5147ms
+rtt min/avg/max/mdev = 0.473/0.574/0.770/0.114 ms
+
