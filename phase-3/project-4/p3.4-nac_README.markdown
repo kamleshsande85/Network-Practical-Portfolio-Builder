@@ -1,0 +1,46 @@
+# Project 3.4: NAC (802.1X) Policy Enforcement Demo
+
+**Phase:** III (Advanced)  
+**Project No.:** P3.4  
+**Objective:** Control network access with 802.1X authentication.  
+**Time Estimate:** 4-5 hours.  
+**Real-World Tie-In:** Simulates enterprise access control for secure onboarding.  
+**Concepts Covered:** NAC, 802.1X, AAA, Guest/Quarantine Networks.  
+**Tools/Requirements:** 
+- FreeRADIUS VM.
+- Packet Tracer (switch).
+
+## Kanban Tasks
+- [ ] Setup FreeRADIUS (To Do)
+- [ ] Configure 802.1X (To Do)
+- [ ] Test policies (To Do)
+- [ ] Simulate guest VLAN (To Do)
+
+## Detailed Steps
+
+### 1. Setup FreeRADIUS (60 minutes)
+1. Install: `sudo apt install freeradius`.
+2. Add user: `/etc/freeradius/3.0/users`, `testuser Cleartext-Password := "password123"`.
+3. Restart: `sudo systemctl restart freeradius`.
+
+### 2. Configure 802.1X (45 minutes)
+1. In Packet Tracer, enable 802.1X: `aaa new-model; dot1x system-auth-control`.
+2. Set RADIUS server: `radius-server host 192.168.1.10`.
+
+### 3. Test Policies (30 minutes)
+1. Connect client with 802.1X client (e.g., Windows supplicant).
+2. Verify auth: Check FreeRADIUS logs `/var/log/freeradius`.
+
+### 4. Simulate Guest VLAN (30 minutes)
+1. Set guest VLAN: `dot1x guest-vlan 99`.
+2. Test unauth client: Should go to VLAN 99.
+
+**Deliverables:** 
+- Configs (`/assets/radius.conf`).
+- Logs (`/assets/auth.log`).
+- Demo video (`/assets/nac-demo.mp4`).
+
+**Tips & Troubleshooting:** 
+- Auth fails: Check user credentials in FreeRADIUS.
+- VLAN issues: Verify switch port settings.
+- Commit: `git add . && git commit -m "P3.4 NAC completed" && git push`.

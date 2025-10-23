@@ -1,0 +1,46 @@
+# Project 3.1: Site-to-Site VPN Implementation (IPsec Tunnel)
+
+**Phase:** III (Advanced)  
+**Project No.:** P3.1  
+**Objective:** Connect remote sites securely with an IPsec VPN.  
+**Time Estimate:** 4-5 hours.  
+**Real-World Tie-In:** Simulates enterprise VPN setups for secure branch connectivity.  
+**Concepts Covered:** WAN/VPNs, IPsec, Authentication/Encryption.  
+**Tools/Requirements:** 
+- Two pfSense VMs.
+- Client VMs.
+
+## Kanban Tasks
+- [ ] Configure IPsec (To Do)
+- [ ] Test tunnel (To Do)
+- [ ] Capture traffic (To Do)
+- [ ] Document policies (To Do)
+
+## Detailed Steps
+
+### 1. Configure IPsec (60 minutes)
+1. Setup two pfSense VMs: Site A (`192.168.1.1`), Site B (`192.168.2.1`).
+2. In GUI, add IPsec: Phase 1 (IKE, PSK), Phase 2 (ESP, AES).
+3. Save config: `/assets/ipsec.conf`.
+
+### 2. Test Tunnel (45 minutes)
+1. Ping from Site A client to Site B: `ping 192.168.2.10`.
+2. Verify tunnel: Check pfSense status.
+
+### 3. Capture Traffic (30 minutes)
+1. Use Wireshark on WAN interface: Filter `ipsec`.
+2. Save: `/assets/ipsec.pcap`.
+
+### 4. Document Policies (45 minutes)
+1. Create `/phase-3/p3.1-vpn/policy.md`: List encryption, PSK.
+2. Include topology: `/assets/vpn-topology.png`.
+
+**Deliverables:** 
+- Config (`/assets/ipsec.conf`).
+- Packet capture (`/assets/ipsec.pcap`).
+- Policy doc (`policy.md`).
+
+**Tips & Troubleshooting:** 
+- Tunnel down: Match Phase 1/2 settings exactly.
+- NAT issues: Add exemptions in pfSense.
+- Commit: `git add . && git commit -m "P3.1 VPN completed" && git push`.

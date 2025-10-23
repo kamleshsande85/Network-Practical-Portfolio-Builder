@@ -1,0 +1,46 @@
+# Project 3.3: Wireless Security Audit & WPA3 Deployment
+
+**Phase:** III (Advanced)  
+**Project No.:** P3.3  
+**Objective:** Secure wireless networks against threats with WPA3.  
+**Time Estimate:** 3-4 hours.  
+**Real-World Tie-In:** Simulates wireless admin tasks for secure Wi-Fi deployment.  
+**Concepts Covered:** 802.11 Standards, WPA3, Channels, Site Surveys.  
+**Tools/Requirements:** 
+- OpenWRT VM.
+- hostapd (`sudo apt install hostapd`).
+
+## Kanban Tasks
+- [ ] Setup AP (To Do)
+- [ ] Audit security (To Do)
+- [ ] Deploy WPA3 (To Do)
+- [ ] Create coverage map (To Do)
+
+## Detailed Steps
+
+### 1. Setup AP (45 minutes)
+1. Install hostapd on Ubuntu VM.
+2. Configure: `/etc/hostapd/hostapd.conf` with SSID `TestAP`, channel 6.
+
+### 2. Audit Security (30 minutes)
+1. Use `airodump-ng` (Kali VM) to scan for weak encryption.
+2. Log: `/assets/audit.log`.
+
+### 3. Deploy WPA3 (45 minutes)
+1. Edit hostapd: Set `wpa=2`, `wpa_key_mgmt=SAE`.
+2. Restart: `sudo systemctl restart hostapd`.
+3. Connect client, verify WPA3.
+
+### 4. Create Coverage Map (30 minutes)
+1. In Draw.io, draw conceptual heatmap.
+2. Save: `/assets/coverage-map.png`.
+
+**Deliverables:** 
+- Config (`/assets/hostapd.conf`).
+- Audit log (`/assets/audit.log`).
+- Map (`/assets/coverage-map.png`).
+
+**Tips & Troubleshooting:** 
+- WPA3 fails: Ensure client supports SAE.
+- Channel interference: Use 1, 6, or 11.
+- Commit: `git add . && git commit -m "P3.3 wireless completed" && git push`.

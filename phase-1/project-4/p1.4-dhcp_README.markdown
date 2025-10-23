@@ -1,0 +1,49 @@
+# Project 1.4: DHCP Client-Server Configuration
+
+**Phase:** I (Beginner)  
+**Project No.:** P1.4  
+**Objective:** Implement dynamic IP assignment to automate network onboarding.  
+**Time Estimate:** 3-4 hours.  
+**Real-World Tie-In:** Mimics DHCP server setup in small networks for efficient IP management.  
+**Concepts Covered:** DHCP Process (DORA), IP Lease/Reservation, IP Conflicts, APIPA.  
+**Tools/Requirements:** 
+- Ubuntu VM (server).
+- Windows/Linux VM (client).
+- Wireshark (for packet capture).
+
+## Kanban Tasks
+- [ ] Install DHCP server
+- [ ] Configure client
+- [ ] Capture DORA packets
+- [ ] Simulate conflict
+
+## Detailed Steps
+
+### 1. Install DHCP Server (45 minutes)
+1. On Ubuntu VM: `sudo apt install isc-dhcp-server`.
+2. Edit `/etc/dhcp/dhcpd.conf`: Set scope `192.168.100.0/24`, range `192.168.100.10-100`.
+3. Start server: `sudo systemctl start isc-dhcp-server`.
+
+### 2. Configure Client (30 minutes)
+1. On client VM: Set to DHCP (`dhclient` or auto in settings).
+2. Verify IP: `ipconfig` or `ip addr`.
+
+### 3. Capture DORA Packets (45 minutes)
+1. Install Wireshark: `sudo apt install wireshark`.
+2. Capture on server interface: Filter `bootp`.
+3. Save capture: `/assets/dora.pcap`.
+
+### 4. Simulate Conflict (30 minutes)
+1. Assign same IP manually on another VM.
+2. Check logs: `/var/log/syslog` for conflicts.
+3. Force APIPA: Stop server, check `169.254.x.x`.
+
+**Deliverables:** 
+- DHCP config (`/assets/dhcpd.conf`).
+- Packet capture (`/assets/dora.pcap`).
+- Flowchart (`/assets/dora-flow.png`).
+
+**Tips & Troubleshooting:** 
+- Server not assigning IPs: Check interface in `/etc/default/isc-dhcp-server`.
+- Conflict errors: Use `ipconfig /release` and `/renew`.
+- Commit: `git add . && git commit -m "P1.4 DHCP setup completed" && git push`.

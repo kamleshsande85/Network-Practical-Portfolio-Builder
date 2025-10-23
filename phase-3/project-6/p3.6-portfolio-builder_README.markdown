@@ -1,0 +1,71 @@
+# Project 3.6: Network+ Portfolio Builder
+
+**Phase:** III (Advanced)  
+**Project No.:** P3.6  
+**Objective:** Consolidate all Network+ projects into a professional GitHub portfolio for certification or job applications.  
+**Time Estimate:** 3-5 hours.  
+**Real-World Tie-In:** Reflects network engineering tasks for documentation and stakeholder presentations.  
+**Concepts Covered:** Documentation, Topology Visualization, Configuration Management, Professional Presentation.  
+**Tools/Requirements:** 
+- GitHub account.
+- Draw.io (free online).
+- VS Code.
+- Deliverables from P1.1-P3.5.
+- Optional: SimpleScreenRecorder, pandoc.
+
+## Kanban Tasks
+- [ ] Setup repository (To Do)
+- [ ] Organize deliverables (To Do)
+- [ ] Create portfolio overview (To Do)
+- [ ] Document troubleshooting showcase (To Do)
+- [ ] Publish and share (To Do)
+- [ ] Extension: Presentation slides (Optional, To Do)
+
+## Detailed Steps
+
+### 1. Setup Repository (30-45 minutes)
+1. Create GitHub repo: `NetworkPlus-Portfolio-N10-009`.
+2. Initialize: `echo "# CompTIA Network+ Portfolio" > README.md`.
+3. Add `.gitignore`: 
+   ```
+   *.iso
+   *.vdi
+   *.log
+   *.mp4
+   ```
+4. Create folders: `mkdir -p docs phase-1 phase-2 phase-3 assets`.
+
+### 2. Organize Deliverables (60-90 minutes)
+1. Copy artifacts: e.g., `/phase-1/p1.1-osi-cable/osi-diagram.png`.
+2. Refine diagrams: Standardize in Draw.io with Cisco icons.
+3. Clean configs/logs: Remove sensitive data, save as `.txt`.
+
+### 3. Create Portfolio Overview (45-60 minutes)
+1. Write `/docs/portfolio-overview.md`:
+   - Intro: "Showcase of 15 Network+ projects."
+   - Table: `| Project | Domain | Artifacts |`.
+2. Link artifacts: `[P2.2 Hydra Logs](../phase-2/p2.2-hydra/hydra-ssh.log)`.
+
+### 4. Document Troubleshooting Showcase (30-45 minutes)
+1. Create `/docs/troubleshooting-showcase.md`.
+2. Highlight P3.5: Include faults, fixes, and OSI approach.
+3. Add demo video: Record 5-min overview of key projects.
+
+### 5. Publish and Share (30 minutes)
+1. Push: `git add . && git commit -m "Portfolio completed" && git push`.
+2. Share link: Add to resume or LinkedIn.
+
+### 6. Extension: Presentation Slides (Optional, 60 minutes)
+1. Use Google Slides: Summarize 3 key projects (e.g., P2.2, P3.1, P3.5).
+2. Export: `/assets/presentation.pdf`.
+
+**Deliverables:** 
+- Overview (`/docs/portfolio-overview.md`).
+- Showcase (`/docs/troubleshooting-showcase.md`).
+- Video (`/assets/portfolio-demo.mp4`).
+- All artifacts in `/phase-*` and `/assets`.
+
+**Tips & Troubleshooting:** 
+- Large files: Compress videos with `ffmpeg`.
+- Broken links: Test with VS Code preview.
+- Commit: `git add . && git commit -m "P3.6 portfolio completed" && git push`.

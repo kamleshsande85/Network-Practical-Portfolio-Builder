@@ -1,0 +1,48 @@
+# Project 2.4: Basic Firewall & ACL Implementation
+
+**Phase:** II (Intermediate)  
+**Project No.:** P2.4  
+**Objective:** Secure networks by controlling traffic with firewalls and ACLs.  
+**Time Estimate:** 3-4 hours.  
+**Real-World Tie-In:** Mimics firewall configuration for enterprise security policies.  
+**Concepts Covered:** Firewall Filtering, ACLs, Port Security, Ports/Protocols.  
+**Tools/Requirements:** 
+- pfSense VM.
+- Client VMs.
+- Packet Tracer (for switch).
+
+## Kanban Tasks
+- [ ] Install pfSense (To Do)
+- [ ] Create ACLs (To Do)
+- [ ] Test rules (To Do)
+- [ ] Configure port security (To Do)
+
+## Detailed Steps
+
+### 1. Install pfSense (45 minutes)
+1. Download pfSense ISO, create VM in VirtualBox.
+2. Set interfaces: WAN (NAT), LAN (`192.168.1.1/24`).
+3. Access GUI: http://192.168.1.1.
+
+### 2. Create ACLs (45 minutes)
+1. In pfSense, add rule: Deny TCP 23 (telnet), allow TCP 80 (HTTP).
+2. Apply to LAN interface.
+3. Save config: `/assets/pfsense-acl.conf`.
+
+### 3. Test Rules (30 minutes)
+1. From client VM, try telnet (should fail), HTTP (should work).
+2. Log results: `telnet 192.168.1.2 23 > test.log`.
+
+### 4. Configure Port Security (30 minutes)
+1. In Packet Tracer, set switch port to allow one MAC.
+2. Test: Connect second device, verify block.
+
+**Deliverables:** 
+- ACL config (`/assets/pfsense-acl.conf`).
+- Test logs (`/assets/test.log`).
+- Policy doc (`policy.md`).
+
+**Tips & Troubleshooting:** 
+- Implicit deny in ACLs: Allow needed traffic explicitly.
+- pfSense GUI slow: Increase VM RAM.
+- Commit: `git add . && git commit -m "P2.4 firewall completed" && git push`.

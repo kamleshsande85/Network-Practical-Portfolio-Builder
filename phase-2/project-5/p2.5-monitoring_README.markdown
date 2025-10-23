@@ -1,0 +1,47 @@
+# Project 2.5: Network Monitoring Setup (Syslog/SNMP)
+
+**Phase:** II (Intermediate)  
+**Project No.:** P2.5  
+**Objective:** Monitor network performance with Syslog and SNMP.  
+**Time Estimate:** 3-4 hours.  
+**Real-World Tie-In:** Simulates network admin tasks for proactive issue detection.  
+**Concepts Covered:** SNMP, Syslog, Baselining, Performance Metrics.  
+**Tools/Requirements:** 
+- Ubuntu VM (Syslog server).
+- Packet Tracer/GNS3.
+- snmpwalk (`sudo apt install snmp`).
+
+## Kanban Tasks
+- [ ] Setup Syslog server (To Do)
+- [ ] Configure SNMP (To Do)
+- [ ] Baseline metrics (To Do)
+- [ ] Document results (To Do)
+
+## Detailed Steps
+
+### 1. Setup Syslog Server (45 minutes)
+1. Install rsyslog: `sudo apt install rsyslog`.
+2. Edit `/etc/rsyslog.conf`: Enable UDP `input(type="imudp" port="514")`.
+3. Restart: `sudo systemctl restart rsyslog`.
+
+### 2. Configure SNMP (45 minutes)
+1. On router (Packet Tracer), enable SNMP: `snmp-server community public RO`.
+2. Set trap: `snmp-server host 192.168.1.10 public`.
+
+### 3. Baseline Metrics (30 minutes)
+1. Run `snmpwalk -v2c -c public 192.168.1.1 > snmp.log`.
+2. Ping for latency: `ping -c 100 192.168.1.1 > ping.log`.
+
+### 4. Document Results (30 minutes)
+1. Create `/phase-2/p2.5-monitoring/report.md`.
+2. Include logs and latency table: `| Metric | Value |`.
+
+**Deliverables:** 
+- Logs (`/assets/snmp.log`, `/assets/ping.log`).
+- Report (`report.md`).
+- Diagram (`/assets/monitoring-topology.png`).
+
+**Tips & Troubleshooting:** 
+- No logs: Check UDP 514 open (`sudo ufw allow 514/udp`).
+- SNMP fails: Verify community string.
+- Commit: `git add . && git commit -m "P2.5 monitoring completed" && git push`.

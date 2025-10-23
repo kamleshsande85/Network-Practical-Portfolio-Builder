@@ -1,0 +1,48 @@
+# Project 3.2: Redundant Gateway & Load Balancing
+
+**Phase:** III (Advanced)  
+**Project No.:** P3.2  
+**Objective:** Ensure uptime with failover and load balancing.  
+**Time Estimate:** 4-5 hours.  
+**Real-World Tie-In:** Mimics high-availability setups in enterprise networks.  
+**Concepts Covered:** High Availability, VRRP, Load Balancing, LACP.  
+**Tools/Requirements:** 
+- Two routers (Packet Tracer).
+- HAProxy VM.
+
+## Kanban Tasks
+- [ ] Configure VRRP (To Do)
+- [ ] Setup HAProxy (To Do)
+- [ ] Enable LACP (To Do)
+- [ ] Test failover (To Do)
+
+## Detailed Steps
+
+### 1. Configure VRRP (45 minutes)
+1. In Packet Tracer, set two routers: R1 (`192.168.1.1`), R2 (`192.168.1.2`).
+2. Enable VRRP: `vrrp 1 ip 192.168.1.254` (virtual IP).
+3. Set priority: R1 (150), R2 (100).
+
+### 2. Setup HAProxy (45 minutes)
+1. Install HAProxy: `sudo apt install haproxy`.
+2. Configure: Balance two servers (`192.168.1.10`, `.11`).
+3. Save: `/assets/haproxy.cfg`.
+
+### 3. Enable LACP (30 minutes)
+1. On switch, enable LACP: `interface range fa0/1-2; channel-group 1 mode active`.
+2. Verify: `show etherchannel summary`.
+
+### 4. Test Failover (45 minutes)
+1. Shut down R1: `interface fa0/0; shutdown`.
+2. Ping virtual IP: `ping 192.168.1.254`.
+3. Log: `/assets/failover.log`.
+
+**Deliverables:** 
+- Configs (`/assets/vrrp.conf`, `/assets/haproxy.cfg`).
+- Logs (`/assets/failover.log`).
+- Diagram (`/assets/redundancy-topology.png`).
+
+**Tips & Troubleshooting:** 
+- VRRP not switching: Check priority.
+- HAProxy fails: Verify backend server IPs.
+- Commit: `git add . && git commit -m "P3.2 redundancy completed" && git push`.

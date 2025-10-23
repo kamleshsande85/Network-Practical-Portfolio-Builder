@@ -1,0 +1,45 @@
+# Project 2.1: Subnetting for 3 Departments
+
+**Phase:** II (Intermediate)  
+**Project No.:** P2.1  
+**Objective:** Design efficient IP schemes for segmented networks.  
+**Time Estimate:** 3-4 hours.  
+**Real-World Tie-In:** Simulates network planning for organizations with multiple departments.  
+**Concepts Covered:** Subnetting, CIDR Notation, VLSM, Address Calculations.  
+**Tools/Requirements:** 
+- Excel/Google Sheets.
+- Packet Tracer/GNS3.
+
+## Kanban Tasks
+- [ ] Calculate subnets
+- [ ] Configure in simulator
+- [ ] Test connectivity
+- [ ] Document plan
+
+## Detailed Steps
+
+### 1. Calculate Subnets (60 minutes)
+1. Given `192.168.0.0/24`, subnet for 50, 20, 10 hosts.
+2. Use VLSM: /26 (62 hosts), /27 (30 hosts), /28 (14 hosts).
+3. Create table: `| Subnet | Range | Broadcast |`.
+
+### 2. Configure in Simulator (45 minutes)
+1. In Packet Tracer, create 3 VLANs with subnets.
+2. Assign IPs to PCs: e.g., `192.168.0.5/26`.
+
+### 3. Test Connectivity (30 minutes)
+1. Ping within subnets (should work).
+2. Ping across subnets (should fail without routing).
+
+### 4. Document Plan (30 minutes)
+1. Save table to `/phase-2/p2.1-subnetting/subnet-plan.md`.
+2. Screenshot simulator: `/assets/subnet-config.png`.
+
+**Deliverables:** 
+- Subnet table (`subnet-plan.md`).
+- Simulator screenshot (`/assets/subnet-config.png`).
+
+**Tips & Troubleshooting:** 
+- Overlapping subnets: Recalculate ranges.
+- No ping: Check subnet masks.
+- Commit: `git add . && git commit -m "P2.1 subnetting completed" && git push`.

@@ -1,0 +1,60 @@
+# Project 1.1: OSI Model Deep Dive & Cable Crimp
+
+**Phase:** I (Beginner)\
+**Project No.:** P1.1\
+**Objective:** Understand the OSI model and practice physical cabling to master Layer 1 fundamentals.\
+**Time Estimate:** 2-3 hours.\
+**Real-World Tie-In:** Simulates network technician tasks in wiring and understanding data flow, critical for troubleshooting physical connectivity.\
+**Concepts Covered:** OSI Layers (1-7), Cabling Standards (T568A/B, Straight/Crossover), Layer 1 Devices (hubs, repeaters).\
+**Tools/Requirements:**
+
+- VirtualBox (free).
+- Physical cable + crimping tool (optional; use online simulator like CableOrganizer if no hardware).
+- Draw.io (free online).
+- Kanban Tasks
+
+- [ ] Study OSI layers
+
+- [ ] Simulate/crimp T568B cable
+
+- [ ] Create OSI data flow diagram
+
+- [ ] Test cable connectivity
+
+## Detailed Steps
+
+### 1. Study OSI Layers (30 minutes)
+
+1. Research each OSI layer: Physical (cables), Data Link (MAC), Network (IP), Transport (TCP/UDP), Session, Presentation, Application.
+2. Map devices: e.g., hub (L1), switch (L2), router (L3).
+3. Note protocols: e.g., HTTP (L7), TCP (L4).
+
+### 2. Simulate/Crimp Cable (45 minutes)
+
+1. Use online simulator or physical RJ45 cable.
+2. Follow T568B standard: Orange-White, Orange, Green-White, Blue, Blue-White, Green, Brown-White, Brown.
+3. Test: Use simulator’s continuity checker or multimeter.
+
+### 3. Create OSI Diagram (30 minutes)
+
+1. In Draw.io, draw a data flow (e.g., HTTP request from PC to server).
+2. Label layers and devices.
+3. Export as `osi-diagram.png` to `/assets`.
+
+### 4. Test and Document (30 minutes)
+
+1. If physical cable, connect two PCs and ping.
+2. Write report: Describe packet journey through OSI layers.
+3. Save to `/phase-1/p1.1-osi-cable/report.md`.
+
+**Deliverables:**
+
+- OSI diagram (`/assets/osi-diagram.png`).
+- Cable photo/video (`/assets/cable.mp4`).
+- Report (`report.md`).
+
+**Tips & Troubleshooting:**
+
+- Wrong T568B order causes no connectivity—double-check colors.
+- Use `ping` to verify cable; check PC firewall if fails.
+- Commit: `git add . && git commit -m "P1.1 OSI and cable completed" && git push`.

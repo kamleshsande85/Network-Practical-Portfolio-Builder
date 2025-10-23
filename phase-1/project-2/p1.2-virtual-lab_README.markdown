@@ -1,0 +1,50 @@
+# Project 1.2: Virtual Network Lab Setup (VM to VM)
+
+**Phase:** I (Beginner)  
+**Project No.:** P1.2  
+**Objective:** Build a virtualized network to practice isolated configurations safely.  
+**Time Estimate:** 3-4 hours.  
+**Real-World Tie-In:** Simulates network lab setups for safe testing, a common practice in IT training.  
+**Concepts Covered:** Virtualization (Hypervisor), Private Networking, IP Addressing (Manual/DHCP), Layer 2 Switching.  
+**Tools/Requirements:** 
+- VirtualBox (free).
+- Two VMs (Ubuntu/Windows, free ISOs from official sites).
+- Command line.
+
+## Kanban Tasks
+- [ ] Install VirtualBox and VMs
+- [ ] Configure private network
+- [ ] Assign static IPs
+- [ ] Test connectivity
+
+## Detailed Steps
+
+### 1. Install VirtualBox and VMs (60 minutes)
+1. Download/install VirtualBox: `sudo apt install virtualbox`.
+2. Create two VMs: Ubuntu (VM1), Windows (VM2).
+3. Download ISOs: ubuntu.com, microsoft.com (eval).
+
+### 2. Configure Private Network (45 minutes)
+1. Set VM network adapters to "Internal Network" in VirtualBox.
+2. Name network: `lab-net`.
+3. Boot VMs and verify network isolation.
+
+### 3. Assign Static IPs (30 minutes)
+1. VM1 (Ubuntu): `sudo nano /etc/netplan/01-netcfg.yaml`, set `192.168.1.10/24`.
+2. VM2 (Windows): Set `192.168.1.20/24` via Network Settings.
+3. Apply: `sudo netplan apply` (Ubuntu), restart network (Windows).
+
+### 4. Test Connectivity (45 minutes)
+1. Ping VM1 from VM2: `ping 192.168.1.10`.
+2. Run `arp -a` to verify Layer 2 MAC learning.
+3. Save logs: `ping ... > ping.log`.
+
+**Deliverables:** 
+- Screenshots (`/assets/vm-configs.png`).
+- Topology diagram (`/assets/lab-topology.png`).
+- Ping logs (`ping.log`).
+
+**Tips & Troubleshooting:** 
+- No ping: Check firewall (`sudo ufw disable` for lab).
+- Wrong network mode: Ensure "Internal Network", not NAT.
+- Commit: `git add . && git commit -m "P1.2 virtual lab completed" && git push`.

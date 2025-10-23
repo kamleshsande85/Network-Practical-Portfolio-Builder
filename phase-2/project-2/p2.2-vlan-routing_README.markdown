@@ -1,0 +1,100 @@
+# Project 2.2: Multi-VLAN Router-on-a-Stick
+
+**Phase:** II (Intermediate)  
+**Project No.:** P2.2  
+**Objective:** Configure a router-on-a-stick setup to enable inter-VLAN routing, demonstrating VLAN segmentation and trunking.  
+**Time Estimate:** 3-4 hours (Days 8-9).  
+**Real-World Tie-In:** Simulates enterprise network setups where a single router handles traffic between multiple VLANs, optimizing hardware use. Aligns with Network+ objectives on network segmentation and routing.  
+**Concepts Covered:** VLANs (802.1Q), Trunking, Inter-VLAN Routing (Router-on-a-Stick), Layer 2 vs. Layer 3.  
+**Tools/Requirements:** 
+- Cisco Packet Tracer or GNS3 (free).
+- Simulated router and managed switch.
+- Client PCs (simulated in Packet Tracer/GNS3).
+- Draw.io (free online for diagrams).
+
+## Kanban Tasks
+- [ ] Create VLANs 10, 20, 30
+- [ ] Configure trunk and subinterfaces
+- [ ] Test inter-VLAN routing
+- [ ] Document configurations
+
+## Detailed Steps
+
+### 1. Create VLANs (45 minutes)
+1. Open Packet Tracer or GNS3 and create a topology: 1 router, 1 managed switch, 3 PCs (one per VLAN).
+2. On the switch, configure VLANs:
+   ```
+   vlan 10
+    name SALES
+   vlan 20
+    name ENGINEERING
+   vlan 30
+    name MANAGEMENT
+   ```
+3. Assign PCs to VLANs:
+   - PC1 (VLAN 10): Port `Fa0/1`, `switchport access vlan 10`.
+   - PC2 (VLAN 20): Port `Fa0/2`, `switchport access vlan 20`.
+   - PC3 (VLAN 30): Port `Fa0/3`, `switchport access vlan 30`.
+4. Verify: `show vlan brief`.
+
+### 2. Configure Trunk and Subinterfaces (60 minutes)
+1. On the switch, set the router link as a trunk:
+   ```
+   interface fa0/24
+    switchport mode trunk
+    switchport trunk allowed vlan 10,20,30
+   ```
+2. On the router, configure subinterfaces for router-on-a-stick:
+   ```
+   interface g0/0.10
+    encapsulation dot1Q 10
+    ip address 192.168.10.1 255.255.255.0
+   interface g0/0.20
+    encapsulation dot1Q 20
+    ip address 192.168.20.1 255.255.255.0
+   interface g0/0.30
+    encapsulation dot1Q 30
+    ip address 192.168.30.1 255.255.255.0
+   ```
+3. Enable the main interface: `interface g0/0; no shutdown`.
+
+### 3. Test Inter-VLAN Routing (45 minutes)
+1. Assign IPs to PCs:
+   - PC1: `192.168.10.10/24`, Gateway `192.168.10.1`.
+   - PC2: `192.168.20.20/24`, Gateway `192.168.20.1`.
+   - PC3: `192.168.30.30/24`, Gateway `192.168.30.1`.
+2. Test connectivity:
+   - From PC1: `ping 192.168.20.20` (VLAN 10 to 20).
+   - From PC2: `ping 192.168.30.30` (VLAN 20 to 30).
+3. Save logs: `ping ... > ping.log`.
+4. Verify Layer 3 routing: `show ip route` on router.
+
+### 4. Document Configurations (30-45 minutes)
+1. Save configurations:
+   - Switch: `show running-config > switch-config.txt`.
+   - Router: `show running-config > router-config.txt`.
+2. Create topology diagram in Draw.io:
+   - Include router, switch, PCs, VLANs, and IP assignments.
+   - Export to `/assets/vlan-topology.png`.
+3. Write report in `/phase-2/p2.2-vlan-routing/report.md`:
+   - Explain VLAN setup, trunking, and inter-VLAN routing.
+   - Include ping results and Layer 2 vs. Layer 3 differences.
+4. Commit to GitHub:
+   ```
+   git add .
+   git commit -m "P2.2 VLAN routing completed"
+   git push
+   ```
+
+**Deliverables:** 
+- Switch config (`/assets/switch-config.txt`).
+- Router config (`/assets/router-config.txt`).
+- Ping logs (`/assets/ping.log`).
+- Topology diagram (`/assets/vlan-topology.png`).
+- Report (`report.md`).
+
+**Tips & Troubleshooting:** 
+- No inter-VLAN ping: Check trunk encapsulation (`dot1Q`) and subinterface IPs.
+- VLANs not showing: Verify `vlan database` or `show vlan brief`.
+- Packet Tracer crash: Save often; use GNS3 if unstable.
+- Layer 2 vs. Layer 3 confusion: Switch (L2) forwards frames; router (L3) routes packets.

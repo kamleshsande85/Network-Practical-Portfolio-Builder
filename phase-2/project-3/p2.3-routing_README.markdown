@@ -1,0 +1,47 @@
+# Project 2.3: Static & Dynamic Routing Implementation
+
+**Phase:** II (Intermediate)  
+**Project No.:** P2.3  
+**Objective:** Enable traffic between networks using routing protocols.  
+**Time Estimate:** 3-4 hours.  
+**Real-World Tie-In:** Simulates enterprise routing setup for inter-network connectivity.  
+**Concepts Covered:** Static/Dynamic Routing, OSPF, Routing Tables.  
+**Tools/Requirements:** 
+- Packet Tracer/GNS3.
+- Three router simulators.
+
+## Kanban Tasks
+- [ ] Configure static routes (To Do)
+- [ ] Enable OSPF (To Do)
+- [ ] Test routing (To Do)
+- [ ] Simulate failover (To Do)
+
+## Detailed Steps
+
+### 1. Configure Static Routes (45 minutes)
+1. In Packet Tracer, create 3 routers (R1, R2, R3).
+2. Set IPs: R1-R2 `10.0.1.0/24`, R2-R3 `10.0.2.0/24`.
+3. Add static route: `ip route 10.0.2.0 255.255.255.0 10.0.1.2` on R1.
+
+### 2. Enable OSPF (45 minutes)
+1. Clear static routes: `no ip route ...`.
+2. Enable OSPF: `router ospf 1; network 10.0.1.0 0.0.0.255 area 0`.
+3. Verify: `show ip ospf neighbor`.
+
+### 3. Test Routing (30 minutes)
+1. Ping across networks: `ping 10.0.2.2` from R1.
+2. Save: `show ip route > route-table.txt`.
+
+### 4. Simulate Failover (30 minutes)
+1. Shut down R2-R3 link: `interface fa0/1; shutdown`.
+2. Check OSPF convergence: `show ip route`.
+
+**Deliverables:** 
+- Route table (`route-table.txt`).
+- Configs (`/assets/ospf-config.txt`).
+- Report (`/phase-2/p2.3-routing/report.md`).
+
+**Tips & Troubleshooting:** 
+- OSPF not converging: Check area 0.
+- Loops: Verify administrative distance.
+- Commit: `git add . && git commit -m "P2.3 routing completed" && git push`.

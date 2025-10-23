@@ -1,0 +1,45 @@
+# Project 1.5: Network Map & Documentation
+
+**Phase:** I (Beginner)  
+**Project No.:** P1.5  
+**Objective:** Visualize and document your lab for maintainability and auditing.  
+**Time Estimate:** 2-3 hours.  
+**Real-World Tie-In:** Emulates network documentation tasks for compliance and team handovers.  
+**Concepts Covered:** Network Topology (Physical/Logical), Diagrams, Documentation Best Practices.  
+**Tools/Requirements:** 
+- Draw.io (free online).
+- VS Code (for Markdown).
+
+## Kanban Tasks
+- [ ] Draw topologies
+- [ ] Write procedures
+- [ ] Version control
+- [ ] Export diagrams
+
+## Detailed Steps
+
+### 1. Draw Topologies (45 minutes)
+1. In Draw.io, create physical (VM hardware) and logical (IP connections) diagrams for P1.2 lab.
+2. Use Cisco icons for devices (PC, switch).
+
+### 2. Write Procedures (30 minutes)
+1. Create `/phase-1/p1.5-documentation/procedures.md`.
+2. List IPs, configs, and troubleshooting steps from P1.1-P1.4.
+
+### 3. Version Control (30 minutes)
+1. Initialize Git: `git init`.
+2. Commit: `git add . && git commit -m "Initial docs"`.
+
+### 4. Export Diagrams (30 minutes)
+1. Save as `/assets/physical-topology.png` and `/assets/logical-topology.png`.
+2. Push: `git push`.
+
+**Deliverables:** 
+- Diagrams (`/assets/*.png`).
+- Procedures (`procedures.md`).
+- Git repo.
+
+**Tips & Troubleshooting:** 
+- Keep diagrams simple: Avoid clutter.
+- Git errors: Check `.gitignore` for large files.
+- Commit: `git add . && git commit -m "P1.5 documentation completed" && git push`.
